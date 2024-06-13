@@ -10,4 +10,4 @@ O desenvolvimento do jogo está em andamento. As interfaces gráficas estão qua
 
 ## Observações
 
-No momento, o jogo ainda não está completo. Publiquei o projeto no GitHub para melhor controle de versionamento. Assim que o desenvolvimento for concluído, atualizarei o README com mais detalhes sobre o jogo.
+No momento, **o jogo ainda não está completo**. Publiquei o projeto no GitHub para melhor controle de versionamento. Assim que o desenvolvimento for concluído, atualizarei o README com mais detalhes sobre o jogo.
