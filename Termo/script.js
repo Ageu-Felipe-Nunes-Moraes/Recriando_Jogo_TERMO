@@ -6,6 +6,7 @@ class TermoWords{
         this.letterChoice = "";
         this.letterPosition = "";
         this.linelenght = 5;
+        this.wordLetterList = [];
     }
 
     // Creats the "boxs" buttons
@@ -69,19 +70,23 @@ class TermoWords{
     buttonLetterClick(){
         console.log(this.letterChoice);
         let specificBoxButton = "";
-        let wordLetterList = [];
         // Acessar um botão específico pelo ID e modificar seu conteúdo
         for(let i = 1; i < this.linelenght+1; i++){
             specificBoxButton = document.getElementById('button1' + i);
-            wordLetterList.push(specificBoxButton);
+            this.wordLetterList.push(specificBoxButton);
         }
         
         for(let i = 0; i < this.linelenght; i++){
-            if (wordLetterList[i].textContent == ""){
-                wordLetterList[i].textContent = this.letterChoice;       
+            if (this.wordLetterList[i].textContent == ""){
+                this.wordLetterList[i].textContent = this.letterChoice;       
             }
         }
-        
+    }
+
+    emptyBox(){
+        for(let i = 0; i < this.linelenght; i++){
+            this.wordLetterList[i].textContent = "";
+        }
     }
 
 } 
