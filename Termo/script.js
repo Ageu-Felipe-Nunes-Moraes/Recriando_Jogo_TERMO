@@ -5,19 +5,19 @@ class TermoWords{
         this.wordList = ["Turma"];
         this.letterChoice = "";
         this.letterPosition = "";
+        this.linelenght = 5;
     }
 
     // Creats the "boxs" buttons
     quantityButtons(quantityLines){
         const divButton = document.querySelector(".divButtonCaixa");
-        const linelenght = 5;
         let linesList = {};
         // Runs the entire line
         for (let i = 0; i < quantityLines; i++){
             // Declare each "dictionary" item
             linesList["line" + (i + 1)] = [];
             // Loops through all columns creating all buttons text box 
-            for (let j = 0; j < linelenght; j++) {
+            for (let j = 0; j < this.linelenght; j++) {
                 let button = document.createElement("button");
                 button.textContent = ""
                 button.id = "button" + (i + 1) + (j + 1);
@@ -68,9 +68,20 @@ class TermoWords{
     // Get clicked letter
     buttonLetterClick(){
         console.log(this.letterChoice);
+        let specificBoxButton = "";
+        let wordLetterList = [];
         // Acessar um botão específico pelo ID e modificar seu conteúdo
-        const specificButton = document.getElementById('button11');
-        specificButton.textContent = this.letterChoice;
+        for(let i = 1; i < this.linelenght+1; i++){
+            specificBoxButton = document.getElementById('button1' + i);
+            wordLetterList.push(specificBoxButton);
+        }
+        
+        for(let i = 0; i < this.linelenght; i++){
+            if (wordLetterList[i].textContent == ""){
+                wordLetterList[i].textContent = this.letterChoice;       
+            }
+        }
+        
     }
 
 } 
