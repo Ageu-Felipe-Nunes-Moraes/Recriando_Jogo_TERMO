@@ -58,7 +58,7 @@ class TermoWords{
             buttonLetter.id = list[i] + "button";
             buttonLetter.className = "letter";
             buttonLetter.onclick = () => {
-                alert(`Você clicou no botão: ${list[i]}`);
+                console.log(`Você clicou no botão: ${list[i]}`);
                 this.letterChoice = list[i];
                 this.buttonLetterClick();
             };
