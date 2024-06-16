@@ -33,6 +33,7 @@ class TermoWords{
         console.log(linesList);
     }
 
+    // KEY BOARD
     // Creats key board
     keyBoardButtons(){
         const keyQtoP = document.querySelector("#key-q-to-p");
@@ -67,6 +68,9 @@ class TermoWords{
     // Get clicked letter
     buttonLetterClick(){
         console.log(this.letterChoice);
+        // Acessar um botão específico pelo ID e modificar seu conteúdo
+        const specificButton = document.getElementById('button11');
+        specificButton.textContent = this.letterChoice;
     }
 
 } 
