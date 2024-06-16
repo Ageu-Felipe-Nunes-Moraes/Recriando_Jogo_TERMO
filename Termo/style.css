@@ -27,7 +27,7 @@ body, html{
     margin: 0;
 }
 
-button{
+button {
     color: aliceblue;
     justify-content: center;
     text-align: center;
@@ -35,24 +35,28 @@ button{
     border: none;
     cursor: pointer;
     font-family: 'Mitr', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.divButtonCaixa{
-    display: inline-block;
+.divButtonCaixa {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 8em;
     width: 20.40em;
     height: 25em;
-    max-width: 20.40rem;  
+    max-width: 20.40em;
 }
 
-.divButtonCaixa button{
+.divButtonCaixa button {
     background-color: var(--backgroundCaixaColor);
     width: 61px;
     height: 61px;
-    margin: 0px 2px 4px 2px;
+    margin: 2px;
     font-size: 40px;
-    line-height: 60.5px;
+    line-height: 1;
 }
 
 .divkeyBoardButtons{
