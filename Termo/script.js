@@ -2,7 +2,7 @@
 class TermoWords{
 
     constructor(){
-        this.wordList = ["Turma"];
+        this.wordList = ["TERMO"];
         this.letterChoice = "";
         this.letterPosition = "";
         this.linelenght = 5;
@@ -85,12 +85,15 @@ class TermoWords{
     }
 
     emptyBox(){
-        for(let i = 0; i < this.linelenght; i++){
-            this.wordLetterList[i].textContent = "";
+        for(let i = this.linelenght-1; i >= 0; i--){
+            if (this.wordLetterList[i].textContent != ""){
+                this.wordLetterList[i].textContent = "";
+                break;
+            }
         }
     }
 
-    
+
 } 
 
 // Creating instance
