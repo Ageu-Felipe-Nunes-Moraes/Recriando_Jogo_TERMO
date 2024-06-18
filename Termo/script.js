@@ -70,7 +70,7 @@ class TermoWords{
     buttonLetterClick(){
         console.log(this.letterChoice);
         let specificBoxButton = "";
-        // Acessar um botão específico pelo ID e modificar seu conteúdo
+        // Access a specific button by ID and modify its content
         for(let i = 1; i < this.linelenght+1; i++){
             specificBoxButton = document.getElementById('button1' + i);
             this.wordLetterList.push(specificBoxButton);
@@ -78,7 +78,8 @@ class TermoWords{
         
         for(let i = 0; i < this.linelenght; i++){
             if (this.wordLetterList[i].textContent == ""){
-                this.wordLetterList[i].textContent = this.letterChoice;       
+                this.wordLetterList[i].textContent = this.letterChoice;  
+                break;     
             }
         }
     }
@@ -89,6 +90,7 @@ class TermoWords{
         }
     }
 
+    
 } 
 
 // Creating instance
