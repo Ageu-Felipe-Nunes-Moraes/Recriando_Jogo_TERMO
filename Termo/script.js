@@ -1,6 +1,7 @@
 
 class TermoWords{
 
+    // Constructor method
     constructor(){
         this.wordList = ["TERMO"];
         this.letterChoice = "";
@@ -37,14 +38,17 @@ class TermoWords{
     // KEY BOARD
     // Creats key board
     keyBoardButtons(){
+        // Select the div's
         const keyQtoP = document.querySelector("#key-q-to-p");
         const keyAtoL = document.querySelector("#key-a-to-l");
         const keyZtoM = document.querySelector("#key-z-to-m");
 
+        // Creates alphabets lists
         const listQp = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
         const listAl = ["A", "S", "D", "F", "G", "H", "J", "K", 'L'];
         const listZm = ["Z" , "X" ,"C" ,"V" ,"B" ,"N" ,"M"];
 
+        // Connects the lists of the alphabet to div father
         this.putLetterOnScreen(listQp, keyQtoP);
         this.putLetterOnScreen(listAl, keyAtoL);
         this.putLetterOnScreen(listZm, keyZtoM);
@@ -75,7 +79,7 @@ class TermoWords{
             specificBoxButton = document.getElementById('button1' + i);
             this.wordLetterList.push(specificBoxButton);
         }
-        
+        // Allows you to put letter by letter into the boxes
         for(let i = 0; i < this.linelenght; i++){
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].textContent = this.letterChoice;  
@@ -84,6 +88,7 @@ class TermoWords{
         }
     }
 
+    // Empties box to box
     emptyBox(){
         for(let i = this.linelenght-1; i >= 0; i--){
             if (this.wordLetterList[i].textContent != ""){
