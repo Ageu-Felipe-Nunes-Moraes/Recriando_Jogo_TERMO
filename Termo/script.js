@@ -8,6 +8,7 @@ class TermoWords{
         this.letterPosition = "";
         this.linelenght = 5;
         this.wordLetterList = [];
+        this.chosenWord = "";
     }
 
     // Creats the "boxs" buttons
@@ -98,11 +99,24 @@ class TermoWords{
         }
     }
 
+    checksRightWord(){
+        for(let i = 0; i < this.linelenght; i++){
+            this.chosenWord += this.wordLetterList[i].textContent;
+        }
+        console.log(this.chosenWord);
+        if (this.chosenWord == this.wordList[0]){
+            alert("ACERTOOU");
+        } else{
+            alert("ERROOU");
+        }
+        this.chosenWord = "";
+    }
 
 } 
 
 // Creating instance
 const termoWords = new TermoWords();
+
 // Functions of the class TermoWords
 termoWords.quantityButtons(6);
 termoWords.keyBoardButtons();
