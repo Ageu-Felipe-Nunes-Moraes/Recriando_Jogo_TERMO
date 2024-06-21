@@ -99,16 +99,20 @@ class TermoWords{
         }
     }
 
+    // Checks if it is the right word
     checksRightWord(){
+        // Joins all the letters and form a word
         for(let i = 0; i < this.linelenght; i++){
             this.chosenWord += this.wordLetterList[i].textContent;
         }
         console.log(this.chosenWord);
+        // Conditional to know if it is the right word
         if (this.chosenWord == this.wordList[0]){
             alert("ACERTOOU");
         } else{
             alert("ERROOU");
         }
+        // Clears word
         this.chosenWord = "";
     }
 
