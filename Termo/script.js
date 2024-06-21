@@ -10,6 +10,7 @@ class TermoWords{
         this.wordLetterList = [];
         this.chosenWord = "";
         this.columnCount = 1;
+        this.won = false;
     }
 
     // Creats the "boxs" buttons
@@ -92,10 +93,12 @@ class TermoWords{
 
     // Empties box to box
     emptyBox(){
-        for(let i = this.linelenght-1; i >= 0; i--){
-            if (this.wordLetterList[i].textContent != ""){
-                this.wordLetterList[i].textContent = "";
-                break;
+        if (this.won == false){
+            for(let i = this.linelenght-1; i >= 0; i--){
+                if (this.wordLetterList[i].textContent != ""){
+                    this.wordLetterList[i].textContent = "";
+                    break;
+                }
             }
         }
     }
@@ -110,10 +113,16 @@ class TermoWords{
         // Conditional to know if it is the right word
         if (this.chosenWord == this.wordList[0]){
             alert("ACERTOOU");
+            alert("Fim de jogo");
+            this.won = true;
         } else{
-            alert("ERROOU");
-            this.columnCount += 1;
-            this.wordLetterList = []
+            if (this.columnCount < 6){
+                this.columnCount += 1;
+                alert("ERROOU");
+            } else{
+                alert("Fim de jogo");
+            }
+            this.wordLetterList = [];
         }
         
         // Clears word
