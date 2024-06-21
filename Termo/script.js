@@ -9,6 +9,7 @@ class TermoWords{
         this.linelenght = 5;
         this.wordLetterList = [];
         this.chosenWord = "";
+        this.columnCount = 1;
     }
 
     // Creats the "boxs" buttons
@@ -77,7 +78,7 @@ class TermoWords{
         let specificBoxButton = "";
         // Access a specific button by ID and modify its content
         for(let i = 1; i < this.linelenght+1; i++){
-            specificBoxButton = document.getElementById('button1' + i);
+            specificBoxButton = document.getElementById('button' + this.columnCount + i);
             this.wordLetterList.push(specificBoxButton);
         }
         // Allows you to put letter by letter into the boxes
@@ -111,7 +112,10 @@ class TermoWords{
             alert("ACERTOOU");
         } else{
             alert("ERROOU");
+            this.columnCount += 1;
+            this.wordLetterList = []
         }
+        
         // Clears word
         this.chosenWord = "";
     }
