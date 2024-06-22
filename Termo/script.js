@@ -11,6 +11,7 @@ class TermoWords{
         this.chosenWord = "";
         this.columnCount = 1;
         this.won = false;
+        this.incompleteWord = false;
     }
 
     // Creats the "boxs" buttons
@@ -105,28 +106,42 @@ class TermoWords{
 
     // Checks if it is the right word
     checksRightWord(){
-        // Joins all the letters and form a word
         for(let i = 0; i < this.linelenght; i++){
-            this.chosenWord += this.wordLetterList[i].textContent;
+           if (this.wordLetterList[i].textContent == ""){
+                alert("Complete a palavra!!");
+                this.incompleteWord = true;
+                this.wordLetterList = [];
+                break;
+           }
+           if (i == this.linelenght - 1){
+                this.incompleteWord = false;
+           }
         }
-        console.log(this.chosenWord);
-        // Conditional to know if it is the right word
-        if (this.chosenWord == this.wordList[0]){
-            alert("ACERTOOU");
-            alert("Fim de jogo");
-            this.won = true;
-        } else{
-            if (this.columnCount < 6){
-                this.columnCount += 1;
-                alert("ERROOU");
-            } else{
-                alert("Fim de jogo");
+
+        if(this.incompleteWord == false){
+            // Joins all the letters and form a word
+            for(let i = 0; i < this.linelenght; i++){
+                this.chosenWord += this.wordLetterList[i].textContent;
             }
-            this.wordLetterList = [];
+            console.log(this.chosenWord);
+            // Conditional to know if it is the right word
+            if (this.chosenWord == this.wordList[0]){
+                alert("ACERTOOU");
+                alert("Fim de jogo");
+                this.won = true;
+            } else{
+                if (this.columnCount < 6){
+                    this.columnCount += 1;
+                    alert("ERROOU");
+                } else{
+                    alert("Fim de jogo");
+                }
+                this.wordLetterList = [];
+            }
+            
+            // Clears word
+            this.chosenWord = "";
         }
-        
-        // Clears word
-        this.chosenWord = "";
     }
 
 } 
