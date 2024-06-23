@@ -44,7 +44,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 8em;
+    margin-top: 7em;
     width: 20.40em;
     height: 25em;
     max-width: 20.40em;
@@ -62,7 +62,7 @@ button {
 .divkeyBoardButtons{
     display: inline-block;
     justify-content: center;
-    margin-top: 34.5em;
+    margin-top: 34.4em;
     width: 45em;
     height: 11.3em;
     max-width: 45em;
