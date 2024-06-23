@@ -78,7 +78,8 @@ class TermoWords{
     buttonLetterClick(){
         console.log(this.letterChoice);
         let specificBoxButton = "";
-        // Access a specific button by ID and modify its content
+        // ACCESS A SPECIFIC BUTTON BY ID AND MODIFY ITS CONTENT
+        // Creates a list with all the clicked letters
         for(let i = 1; i < this.linelenght+1; i++){
             specificBoxButton = document.getElementById('button' + this.columnCount + i);
             this.wordLetterList.push(specificBoxButton);
@@ -111,7 +112,6 @@ class TermoWords{
            if (this.wordLetterList[i].textContent == ""){
                 alert("Complete a palavra!!");
                 this.incompleteWord = true;
-                this.wordLetterList = [];
                 break;
            }
            // If there are no empty spaces, what is below will happen and the code will continue
