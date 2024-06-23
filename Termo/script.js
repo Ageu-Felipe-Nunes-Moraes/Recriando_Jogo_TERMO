@@ -77,19 +77,22 @@ class TermoWords{
     // Get clicked letter
     buttonLetterClick(){
         console.log(this.letterChoice);
-        let specificBoxButton = "";
-        // ACCESS A SPECIFIC BUTTON BY ID AND MODIFY ITS CONTENT
-        // Creates a list with all the clicked letters
-        for(let i = 1; i < this.linelenght+1; i++){
-            specificBoxButton = document.getElementById('button' + this.columnCount + i);
-            this.wordLetterList.push(specificBoxButton);
-        }
+        this.currentLine();
         // Allows you to put letter by letter into the boxes
         for(let i = 0; i < this.linelenght; i++){
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].textContent = this.letterChoice;  
                 break;     
             }
+        }
+    }
+
+    currentLine(){
+        let specificBoxButton = "";
+        // Creates a list with all the clicked letters
+        for(let i = 1; i < this.linelenght+1; i++){
+            specificBoxButton = document.getElementById('button' + this.columnCount + i);
+            this.wordLetterList.push(specificBoxButton);
         }
     }
 
@@ -115,19 +118,19 @@ class TermoWords{
                 break;
            }
            // If there are no empty spaces, what is below will happen and the code will continue
-           if (i == this.linelenght - 1){
+           else{
                 this.incompleteWord = false;
            }
         }
         // It happens if the word is complete
-        if(this.incompleteWord == false){
+        if(this.incompleteWord === false){
             // Joins all the letters and form a word
             for(let i = 0; i < this.linelenght; i++){
                 this.chosenWord += this.wordLetterList[i].textContent;
             }
             console.log(this.chosenWord);
             // Conditional to know if it is the right word
-            if (this.chosenWord == this.wordList[0]){
+            if (this.chosenWord === this.wordList[0]){
                 alert("ACERTOOU");
                 alert("Fim de jogo");
                 this.won = true;
@@ -135,15 +138,18 @@ class TermoWords{
                 if (this.columnCount < 6){
                     this.columnCount += 1;
                     alert("ERROOU");
+                    this.wordLetterList = [];
+                    this.currentLine();
                 } else{
                     alert("Fim de jogo");
-                }
-                this.wordLetterList = [];
+                    this.won = true;
+                } 
             }
-            
             // Clears word
             this.chosenWord = "";
+            
         }
+        console.log(this.wordLetterList);
     }
 
 } 
@@ -154,3 +160,4 @@ const termoWords = new TermoWords();
 // Functions of the class TermoWords
 termoWords.quantityButtons(6);
 termoWords.keyBoardButtons();
+termoWords.currentLine();
