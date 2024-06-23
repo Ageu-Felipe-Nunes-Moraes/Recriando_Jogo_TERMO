@@ -106,6 +106,7 @@ class TermoWords{
 
     // Checks if it is the right word
     checksRightWord(){
+        // Error handling for incomplete words
         for(let i = 0; i < this.linelenght; i++){
            if (this.wordLetterList[i].textContent == ""){
                 alert("Complete a palavra!!");
@@ -113,11 +114,12 @@ class TermoWords{
                 this.wordLetterList = [];
                 break;
            }
+           // If there are no empty spaces, what is below will happen and the code will continue
            if (i == this.linelenght - 1){
                 this.incompleteWord = false;
            }
         }
-
+        // It happens if the word is complete
         if(this.incompleteWord == false){
             // Joins all the letters and form a word
             for(let i = 0; i < this.linelenght; i++){
