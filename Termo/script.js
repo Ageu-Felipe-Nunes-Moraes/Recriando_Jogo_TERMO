@@ -134,6 +134,11 @@ class TermoWords{
             console.log(this.chosenWord);
             // Conditional to know if it is the right word
             if (this.chosenWord === this.wordList[0]){
+                // When the answer is correct it turns green
+                for(let i = 0; i < this.linelenght; i++){
+                    this.wordLetterList[i].style.backgroundColor = '#3aa394';
+                    this.wordLetterList[i].style.border = 'none';
+                }
                 alert("ACERTOOU");
                 alert("Fim de jogo");
                 this.won = true;
