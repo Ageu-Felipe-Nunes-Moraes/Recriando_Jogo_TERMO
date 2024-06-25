@@ -88,14 +88,16 @@ class TermoWords{
     }
 
     currentLine(){
-        let specificBoxButton = "";
-        // Creates a list with all the clicked letters
-        for(let i = 1; i < this.linelenght+1; i++){
-            specificBoxButton = document.getElementById('button' + this.columnCount + i);
-            this.wordLetterList.push(specificBoxButton);
-            // Applies borders to current lines
-            this.wordLetterList[i-1].style.border = '4px solid #4C4347';
-            this.wordLetterList[i-1].style.backgroundColor = '#6e5c62';
+        if (this.won == false){
+            let specificBoxButton = "";
+            // Creates a list with all the clicked letters
+            for(let i = 1; i < this.linelenght+1; i++){
+                specificBoxButton = document.getElementById('button' + this.columnCount + i);
+                this.wordLetterList.push(specificBoxButton);
+                // Applies borders to current lines
+                this.wordLetterList[i-1].style.border = '4px solid #4C4347';
+                this.wordLetterList[i-1].style.backgroundColor = '#6e5c62';
+            }
         }
     }
 
