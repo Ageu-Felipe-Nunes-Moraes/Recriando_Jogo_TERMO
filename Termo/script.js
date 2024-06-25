@@ -142,13 +142,11 @@ class TermoWords{
                     this.wordLetterList[i].style.backgroundColor = '#3aa394';
                     this.wordLetterList[i].style.border = 'none';
                 }
-                alert("ACERTOOU");
                 alert("Fim de jogo");
                 this.won = true;
             } else{
                 if (this.columnCount < 6){
                     this.columnCount += 1;
-                    alert("ERROOU");
                     this.wordLetterList = [];
                     this.currentLine();
                 } else{
