@@ -123,6 +123,8 @@ class TermoWords{
            // If there are no empty spaces, what is below will happen and the code will continue
            else{
                 this.incompleteWord = false;
+                this.wordLetterList[i].style.backgroundColor = '#312a2c';
+                this.wordLetterList[i].style.border = 'none';
            }
         }
         // It happens if the word is complete
@@ -131,6 +133,7 @@ class TermoWords{
             for(let i = 0; i < this.linelenght; i++){
                 this.chosenWord += this.wordLetterList[i].textContent;
             }
+            this.checksRightPositionsLetters();
             console.log(this.chosenWord);
             // Conditional to know if it is the right word
             if (this.chosenWord === this.wordList[0]){
@@ -160,6 +163,26 @@ class TermoWords{
         console.log(this.wordLetterList);
     }
 
+    checksRightPositionsLetters(){
+
+        let word = this.wordList[0];
+
+        for(let i = 0; i < this.linelenght; i++){
+            console.log(word[i]);
+            console.log(this.chosenWord[i]);
+            if (word[i] === this.chosenWord[i]){
+                this.wordLetterList[i].style.backgroundColor = '#3aa394';
+                this.wordLetterList[i].style.border = 'none';
+            } 
+
+            for(let k = 0; k < this.linelenght; k++){
+                if (word[i] === this.chosenWord[k] && i !== k){
+                    this.wordLetterList[k].style.backgroundColor = '#d3ad69';
+                    this.wordLetterList[k].style.border = 'none';
+                } 
+            }
+        } 
+    }
 } 
 
 // Creating instance
