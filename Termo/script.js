@@ -171,12 +171,16 @@ class TermoWords{
         for(let i = 0; i < this.linelenght; i++){
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
+                let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
+                specificKey.style.background = '#3aa394';
                 this.wordLetterList[i].style.backgroundColor = '#3aa394';
                 this.wordLetterList[i].style.border = 'none';
             } 
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
                 if (word[i] === this.chosenWord[k] && i !== k){
+                    let specificKey = document.getElementById(this.wordLetterList[k].textContent + "button");
+                    specificKey.style.background = '#d3ad69';
                     this.wordLetterList[k].style.backgroundColor = '#d3ad69';
                     this.wordLetterList[k].style.border = 'none';
                 } 
@@ -192,3 +196,15 @@ const termoWords = new TermoWords();
 termoWords.quantityButtons(6);
 termoWords.keyBoardButtons();
 termoWords.currentLine();
+
+// Letting algorithm of stand by
+/*for(let i = 0; i < this.linelenght; i++){
+    if (this.wordLetterList[i].style.backgroundColor == '#312a2c'){
+        buttonLetter.style.backgroundColor = '#504a4b';
+    } 
+}
+
+let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
+specificKey.style.opacity = '0.5';
+
+*/
