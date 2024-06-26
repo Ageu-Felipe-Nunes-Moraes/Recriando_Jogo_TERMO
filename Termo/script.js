@@ -171,16 +171,20 @@ class TermoWords{
         for(let i = 0; i < this.linelenght; i++){
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
-                let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
-                specificKey.style.background = '#3aa394';
+                // Changes the colors of the keyboard letters to green according to the chosen word
+                let specificKeyGreen = document.getElementById(this.wordLetterList[i].textContent + "button");
+                specificKeyGreen.style.background = '#3aa394';
+                // Changes the colors of the boxes to green according to the chosen word
                 this.wordLetterList[i].style.backgroundColor = '#3aa394';
                 this.wordLetterList[i].style.border = 'none';
             } 
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
                 if (word[i] === this.chosenWord[k] && i !== k){
-                    let specificKey = document.getElementById(this.wordLetterList[k].textContent + "button");
-                    specificKey.style.background = '#d3ad69';
+                    // Changes the colors of the keyboard letters to yellow according to the chosen word
+                    let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
+                    specificKeyYellow.style.background = '#d3ad69';
+                    // Changes the colors of the boxes to yellow according to the chosen word
                     this.wordLetterList[k].style.backgroundColor = '#d3ad69';
                     this.wordLetterList[k].style.border = 'none';
                 } 
