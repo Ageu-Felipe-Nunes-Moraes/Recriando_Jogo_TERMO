@@ -12,6 +12,7 @@ class TermoWords{
         this.columnCount = 1;
         this.won = false;
         this.incompleteWord = false;
+        this.equalLetterCounter = 0;
     }
 
     // Creats the "boxs" buttons
@@ -169,8 +170,10 @@ class TermoWords{
         let word = this.wordList[0];
         // Iteration to compare positions
         for(let i = 0; i < this.linelenght; i++){
+            this.equalLetterCounter = 0;
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
+                this.equalLetterCounter++;
                 // Changes the colors of the keyboard letters to green according to the chosen word
                 let specificKeyGreen = document.getElementById(this.wordLetterList[i].textContent + "button");
                 specificKeyGreen.style.background = '#3aa394';
@@ -180,17 +183,25 @@ class TermoWords{
             } 
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
-                if (word[i] === this.chosenWord[k] && i !== k){
-                    // Changes the colors of the keyboard letters to yellow according to the chosen word
-                    let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
-                    specificKeyYellow.style.background = '#d3ad69';
-                    // Changes the colors of the boxes to yellow according to the chosen word
-                    this.wordLetterList[k].style.backgroundColor = '#d3ad69';
-                    this.wordLetterList[k].style.border = 'none';
-                } 
+                if (word[i] === this.chosenWord[k]){
+                    this.equalLetterCounter++;
+                    if (i !== k){
+                        // Changes the colors of the keyboard letters to yellow according to the chosen word
+                        let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
+                        specificKeyYellow.style.background = '#d3ad69';
+                        // Changes the colors of the boxes to yellow according to the chosen word
+                        this.wordLetterList[k].style.backgroundColor = '#d3ad69';
+                        this.wordLetterList[k].style.border = 'none';
+                    } 
+                }
+                
             }
-        } 
-    }
+            if (this.equalLetterCounter === 0){
+                let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
+                specificKey.style.opacity = '0.5';
+            }
+        }
+    } 
 } 
 
 // Creating instance
@@ -203,12 +214,11 @@ termoWords.currentLine();
 
 // Letting algorithm of stand by
 /*for(let i = 0; i < this.linelenght; i++){
-    if (this.wordLetterList[i].style.backgroundColor == '#312a2c'){
+    
         buttonLetter.style.backgroundColor = '#504a4b';
     } 
 }
 
-let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
-specificKey.style.opacity = '0.5';
+
 
 */
