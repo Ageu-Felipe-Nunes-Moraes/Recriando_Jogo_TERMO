@@ -170,21 +170,18 @@ class TermoWords{
         let word = this.wordList[0];
         // Iteration to compare positions
         for(let i = 0; i < this.linelenght; i++){
-            this.equalLetterCounter = 0;
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
-                this.equalLetterCounter++;
                 // Changes the colors of the keyboard letters to green according to the chosen word
                 let specificKeyGreen = document.getElementById(this.wordLetterList[i].textContent + "button");
                 specificKeyGreen.style.background = '#3aa394';
                 // Changes the colors of the boxes to green according to the chosen word
                 this.wordLetterList[i].style.backgroundColor = '#3aa394';
                 this.wordLetterList[i].style.border = 'none';
-            } 
+            }
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
                 if (word[i] === this.chosenWord[k]){
-                    this.equalLetterCounter++;
                     if (i !== k){
                         // Changes the colors of the keyboard letters to yellow according to the chosen word
                         let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
@@ -192,12 +189,19 @@ class TermoWords{
                         // Changes the colors of the boxes to yellow according to the chosen word
                         this.wordLetterList[k].style.backgroundColor = '#d3ad69';
                         this.wordLetterList[k].style.border = 'none';
-                    } 
-                }
-                
+                    }
+                }    
             }
-            if (this.equalLetterCounter === 0){
-                let specificKey = document.getElementById(this.wordLetterList[i].textContent + "button");
+
+            let correctLettersCounter = 0;
+
+            for(let k = 0; k < this.linelenght; k++){
+                if (this.chosenWord[i] === word[k]){
+                    correctLettersCounter++;
+                }
+            }
+            if (correctLettersCounter === 0){
+                let specificKey = document.getElementById(this.chosenWord[i] + "button");
                 specificKey.style.opacity = '0.5';
             }
         }
