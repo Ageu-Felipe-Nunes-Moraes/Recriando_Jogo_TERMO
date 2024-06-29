@@ -81,6 +81,7 @@ class TermoWords{
         this.currentLine();
         // Allows you to put letter by letter into the boxes
         for(let i = 0; i < this.linelenght; i++){
+            // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].textContent = this.letterChoice;
                 this.currentBox();
@@ -89,8 +90,10 @@ class TermoWords{
         }
     }
 
+    // Function that allows the user to know which box he is in
     currentBox(){
         for(let i = 0; i < this.linelenght; i++){
+            // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].style.borderBottomWidth = '10px';
                 break;     
