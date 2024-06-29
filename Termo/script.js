@@ -82,7 +82,17 @@ class TermoWords{
         // Allows you to put letter by letter into the boxes
         for(let i = 0; i < this.linelenght; i++){
             if (this.wordLetterList[i].textContent == ""){
-                this.wordLetterList[i].textContent = this.letterChoice;  
+                this.wordLetterList[i].textContent = this.letterChoice;
+                this.currentBox();
+                break;     
+            }
+        }
+    }
+
+    currentBox(){
+        for(let i = 0; i < this.linelenght; i++){
+            if (this.wordLetterList[i].textContent == ""){
+                this.wordLetterList[i].style.borderBottomWidth = '10px';
                 break;     
             }
         }
@@ -152,6 +162,7 @@ class TermoWords{
                     this.columnCount += 1;
                     this.wordLetterList = [];
                     this.currentLine();
+                    this.currentBox();
                 } else{
                     alert("Fim de jogo");
                     this.won = true;
@@ -217,3 +228,4 @@ const termoWords = new TermoWords();
 termoWords.quantityButtons(6);
 termoWords.keyBoardButtons();
 termoWords.currentLine();
+termoWords.currentBox();
