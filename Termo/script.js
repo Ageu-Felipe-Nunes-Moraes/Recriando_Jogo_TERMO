@@ -96,6 +96,7 @@ class TermoWords{
             // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].style.borderBottomWidth = '10px';
+                this.wordLetterList[i+1].style.borderBottomWidth = '4px';
                 break;     
             }
         }
@@ -121,6 +122,7 @@ class TermoWords{
             for(let i = this.linelenght-1; i >= 0; i--){
                 if (this.wordLetterList[i].textContent != ""){
                     this.wordLetterList[i].textContent = "";
+                    this.currentBox();
                     break;
                 }
             }
