@@ -13,6 +13,7 @@ class TermoWords{
         this.won = false;
         this.incompleteWord = false;
         this.equalLetterCounter = 0;
+        this.map = new Map();
     }
 
     // Creats the "boxs" buttons
@@ -178,6 +179,18 @@ class TermoWords{
             
         }
         console.log(this.wordLetterList);
+    }
+
+    mapAdd(key, content){
+        this.map.set(key, content);
+    }
+
+    getItemMap(key, content){
+        return this.map.get(key, content);
+    }
+
+    clearMap(){
+        this.map.clear();
     }
 
     // Colors specific letters according to position and accuracy 
