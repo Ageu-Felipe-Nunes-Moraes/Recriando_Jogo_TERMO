@@ -181,14 +181,17 @@ class TermoWords{
         console.log(this.wordLetterList);
     }
 
+    // To add things to the map
     mapAdd(key, content){
         this.map.set(key, content);
     }
 
+    // To get things from the map
     getItemMap(key, content){
         return this.map.get(key, content);
     }
 
+    // To clear the map
     clearMap(){
         this.map.clear();
     }
