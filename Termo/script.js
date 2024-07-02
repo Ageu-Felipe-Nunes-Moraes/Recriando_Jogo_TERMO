@@ -104,6 +104,7 @@ class TermoWords{
         }
     }
 
+    // Function that manipulates a specific line
     currentLine(){
         if (this.won == false){
             let specificBoxButton = "";
@@ -165,6 +166,7 @@ class TermoWords{
                 alert("Fim de jogo");
                 this.won = true;
             } else{
+                // Conditional that counts to know the end of the game
                 if (this.columnCount < 6){
                     this.columnCount += 1;
                     this.wordLetterList = [];
