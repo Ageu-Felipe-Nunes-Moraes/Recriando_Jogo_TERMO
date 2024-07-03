@@ -13,7 +13,7 @@ class TermoWords{
         this.won = false;
         this.incompleteWord = false;
         this.equalLetterCounter = 0;
-        this.rightLettersList = []
+        this.rightLettersList = [];
         this.map = new Map();
     }
 
@@ -192,6 +192,11 @@ class TermoWords{
     // To get things from the map
     getItemMap(key, content){
         return this.map.get(key, content);
+    }
+
+    // Deletes specific item of the map
+    deleteSpecificItem(key){
+        this.map.delete(key);
     }
 
     // To clear the map
