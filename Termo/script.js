@@ -190,8 +190,8 @@ class TermoWords{
     }
 
     // To get things from the map
-    getItemMap(key, content){
-        return this.map.get(key, content);
+    getItemMap(key){
+        return this.map.get(key);
     }
 
     // Deletes specific item of the map
@@ -225,6 +225,14 @@ class TermoWords{
                 let specificKey = document.getElementById(this.chosenWord[i] + "button");
                 specificKey.style.opacity = '0.5';
             }
+
+            for (let letter of word) {
+                if (letter === word[i]) {
+                  this.equalLetterCounter++;
+                }
+            }
+
+            this.mapAdd(word[i], this.equalLetterCounter);
             
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
@@ -246,9 +254,12 @@ class TermoWords{
                         if (!this.rightLettersList.includes(word[i])){
                             specificKeyYellow.style.background = '#d3ad69';
                         }
-                        // Changes the colors of the boxes to yellow according to the chosen word
-                        this.wordLetterList[k].style.backgroundColor = '#d3ad69';
-                        this.wordLetterList[k].style.border = 'none';
+                        if (this.getItemMap(word[i]) > 0){
+                            // Changes the colors of the boxes to yellow according to the chosen word
+                            this.wordLetterList[k].style.backgroundColor = '#d3ad69';
+                            this.wordLetterList[k].style.border = 'none';
+                            this.mapAdd(word[i], this.getItemMap(word[i])-1);
+                        }
                     }
                 }    
             }
