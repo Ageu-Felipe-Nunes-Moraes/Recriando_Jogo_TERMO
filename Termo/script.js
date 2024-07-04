@@ -210,6 +210,22 @@ class TermoWords{
         let word = this.wordList[0];
         // Iteration to compare positions
         for(let i = 0; i < this.linelenght; i++){
+            // Counter to count the number of correct letters within the word
+            let correctLettersCounter = 0;
+            // Iterator to loop through all letters chosen by the user
+            for(let k = 0; k < this.linelenght; k++){
+                // If the letter chosen by the user is within the word, what follows will happen
+                if (this.chosenWord[i] === word[k]){
+                    correctLettersCounter++;
+                }
+            }
+
+            // What follows below will happen if the letter is not in the word
+            if (correctLettersCounter === 0){
+                let specificKey = document.getElementById(this.chosenWord[i] + "button");
+                specificKey.style.opacity = '0.5';
+            }
+            
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
                 // Changes the colors of the keyboard letters to green according to the chosen word
@@ -235,20 +251,6 @@ class TermoWords{
                         this.wordLetterList[k].style.border = 'none';
                     }
                 }    
-            }
-            // Counter to count the number of correct letters within the word
-            let correctLettersCounter = 0;
-            // Iterator to loop through all letters chosen by the user
-            for(let k = 0; k < this.linelenght; k++){
-                // If the letter chosen by the user is within the word, what follows will happen
-                if (this.chosenWord[i] === word[k]){
-                    correctLettersCounter++;
-                }
-            }
-            // What follows below will happen if the letter is not in the word
-            if (correctLettersCounter === 0){
-                let specificKey = document.getElementById(this.chosenWord[i] + "button");
-                specificKey.style.opacity = '0.5';
             }
         }
     } 
