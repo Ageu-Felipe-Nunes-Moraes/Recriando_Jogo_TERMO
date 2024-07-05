@@ -185,24 +185,24 @@ class TermoWords{
     }
 
     // To add things to the map
-    mapAdd(key, content){
-        this.map.set(key, content);
-    }
+    //mapAdd(key, content){
+    //    this.map.set(key, content);
+    //}
 
     // To get things from the map
-    getItemMap(key){
-        return this.map.get(key);
-    }
+    //getItemMap(key){
+    //    return this.map.get(key);
+    //}
 
     // Deletes specific item of the map
-    deleteSpecificItem(key){
-        this.map.delete(key);
-    }
+    //deleteSpecificItem(key){
+    //    this.map.delete(key);
+    //}
 
     // To clear the map
-    clearMap(){
-        this.map.clear();
-    }
+    //clearMap(){
+    //    this.map.clear();
+    //}
 
     // Colors specific letters according to position and accuracy 
     checksRightPositionsLetters(){
@@ -210,6 +210,7 @@ class TermoWords{
         let word = this.wordList[0];
         // Iteration to compare positions
         for(let i = 0; i < this.linelenght; i++){
+            this.equalLetterCounter = 0;
             // Counter to count the number of correct letters within the word
             let correctLettersCounter = 0;
             // Iterator to loop through all letters chosen by the user
@@ -226,13 +227,11 @@ class TermoWords{
                 specificKey.style.opacity = '0.5';
             }
 
-            for (let letter of word) {
-                if (letter === word[i]) {
-                  this.equalLetterCounter++;
+            for (let k = 0; k < this.linelenght; k++) {
+                if (word[i] === word[k]) {
+                    this.equalLetterCounter++;
                 }
             }
-
-            this.mapAdd(word[i], this.equalLetterCounter);
             
             // If the letter is in the correct position, the following will happen
             if (word[i] === this.chosenWord[i]){
@@ -243,6 +242,7 @@ class TermoWords{
                 this.wordLetterList[i].style.backgroundColor = '#3aa394';
                 this.wordLetterList[i].style.border = 'none';
                 this.rightLettersList.push(word[i]);
+                this.equalLetterCounter--
             }
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
@@ -254,11 +254,11 @@ class TermoWords{
                         if (!this.rightLettersList.includes(word[i])){
                             specificKeyYellow.style.background = '#d3ad69';
                         }
-                        if (this.getItemMap(word[i]) > 0){
+                        if (this.equalLetterCounter > 0){
                             // Changes the colors of the boxes to yellow according to the chosen word
                             this.wordLetterList[k].style.backgroundColor = '#d3ad69';
                             this.wordLetterList[k].style.border = 'none';
-                            this.mapAdd(word[i], this.getItemMap(word[i])-1);
+                            this.equalLetterCounter--;
                         }
                     }
                 }    
