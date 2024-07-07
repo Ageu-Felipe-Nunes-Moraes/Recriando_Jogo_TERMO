@@ -144,15 +144,16 @@ class TermoWords{
            // If there are no empty spaces, what is below will happen and the code will continue
            else{
                 this.incompleteWord = false;
-                this.wordLetterList[i].style.backgroundColor = '#312a2c';
-                this.wordLetterList[i].style.border = 'none';
            }
         }
         // It happens if the word is complete
         if(this.incompleteWord === false){
-            // Joins all the letters and form a word
             for(let i = 0; i < this.linelenght; i++){
+                // Joins all the letters and form a word
                 this.chosenWord += this.wordLetterList[i].textContent;
+                // Puts a darker color on the wrong letters
+                this.wordLetterList[i].style.backgroundColor = '#312a2c';
+                this.wordLetterList[i].style.border = 'none';
             }
             this.checksRightPositionsLetters();
             console.log(this.chosenWord);
