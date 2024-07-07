@@ -3,7 +3,7 @@ class TermoWords{
 
     // Constructor method
     constructor(){
-        this.wordList = ["TERMO"];
+        this.wordList = ["TEEMO"];
         this.letterChoice = "";
         this.letterPosition = "";
         this.linelenght = 5;
@@ -228,6 +228,7 @@ class TermoWords{
                 specificKey.style.opacity = '0.5';
             }
 
+            // Counts the quantity of the same letter
             for (let k = 0; k < this.linelenght; k++) {
                 if (word[i] === word[k]) {
                     this.equalLetterCounter++;
@@ -243,7 +244,7 @@ class TermoWords{
                 this.wordLetterList[i].style.backgroundColor = '#3aa394';
                 this.wordLetterList[i].style.border = 'none';
                 this.rightLettersList.push(word[i]);
-                this.equalLetterCounter--
+                this.equalLetterCounter--;
             }
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
@@ -256,6 +257,7 @@ class TermoWords{
                             specificKeyYellow.style.background = '#d3ad69';
                         }
                         if (this.equalLetterCounter > 0){
+                            console.log(this.equalLetterCounter);
                             // Changes the colors of the boxes to yellow according to the chosen word
                             this.wordLetterList[k].style.backgroundColor = '#d3ad69';
                             this.wordLetterList[k].style.border = 'none';
