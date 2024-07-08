@@ -19,7 +19,7 @@ class TermoWords{
 
     // Creats the "boxs" buttons
     quantityButtons(quantityLines){
-        const divButton = document.querySelector(".divButtonCaixa");
+        const divButton = document.querySelector(".divButtonBox");
         let linesList = {};
         // Runs the entire line
         for (let i = 0; i < quantityLines; i++){
