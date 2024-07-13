@@ -22,17 +22,18 @@ body, html{
 }
 
 main{
-    display: flex;
+    display: grid;
     justify-content: center;
-    width: 100%;
-    height: 70%;
+    height: 70vh;
+    width: 25vw;
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: flex-end;
+    height: 70vh;
+    width: 25vw;
     padding: 0;
     margin: 0;
 }
@@ -41,7 +42,7 @@ button {
     color: aliceblue;
     display: inline-flex;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 0.7vh;
     border: none;
     cursor: pointer;
     font-family: 'Mitr', sans-serif;
@@ -49,18 +50,18 @@ button {
 }
 
 .divButtonBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 20.40em;
-    height: 24.2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vh;
 }
 
 .divButtonBox button {
     background-color: var(--backgroundCaixaColor);
-    width: 61px;
-    height: 61px;
-    font-size: 40px;
+    width: 8.3vh;
+    height: 8.3vh;
+    font-size: 5.5vh;
 }
 
 .divkeyBoardButtons{
@@ -100,18 +101,18 @@ button {
 }
 
 .letter{
-    font-size: 28px;
+    font-size: 3.6vh;
 }
 
 #enter{
     width: 10.5rem;
-    font-size: 23px;
+    font-size: 3.3vh;
     border-radius: 8%;
     margin: 0px 3.1px 6.5px 3.1px;
 }
 
 #exclusion{
-    font-size: 28px;
+    font-size: 4vh;
     left: 63.5rem;
     border-radius: 8%;
     margin: 0px 3.1px 6.5px 3.1px;
@@ -125,7 +126,7 @@ button {
     border: none;
     margin: 0;
     padding: 0;
-    font-size: 29.40px;
+    font-size: 4vh;
     line-height: 1;
-    top: 8px;
+    top: 1.1vh;
 }

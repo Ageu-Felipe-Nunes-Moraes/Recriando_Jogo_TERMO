@@ -97,8 +97,8 @@ class TermoWords{
         for(let i = 0; i < this.linelenght; i++){
             // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
-                this.wordLetterList[i].style.borderBottomWidth = '10px';
-                this.wordLetterList[i+1].style.borderBottomWidth = '4px';
+                this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
                 break;     
             }
         }
@@ -113,7 +113,7 @@ class TermoWords{
                 specificBoxButton = document.getElementById('button' + this.columnCount + i);
                 this.wordLetterList.push(specificBoxButton);
                 // Applies borders to current lines
-                this.wordLetterList[i-1].style.border = '4px solid #4C4347';
+                this.wordLetterList[i-1].style.border = '0.6vh solid #4C4347';
                 this.wordLetterList[i-1].style.backgroundColor = '#6e5c62';
             }
         }
