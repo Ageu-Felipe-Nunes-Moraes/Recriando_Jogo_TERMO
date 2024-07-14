@@ -270,12 +270,17 @@ class TermoWords{
     }
     // Captures and returns a keyboard key
     keyPressed(){
+        // Event listener that checks for keyboard action
         document.addEventListener('keydown', (event) => {
             let codeKey = event.code;
             let isKey = "";
+
+            // Concatenates the first three letters of the code for the pressed key
             for(let i = 0; i < 3; i++){
                 isKey += codeKey[i];
             }
+
+            // Checks if key is a letter
             if (isKey == "Key"){
                 this.currentLine();
                 let key = event.key.toUpperCase();
