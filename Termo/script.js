@@ -274,6 +274,12 @@ class TermoWords{
         document.addEventListener('keydown', (event) => {
             let codeKey = event.code;
             let isKey = "";
+            let key = event.key.toUpperCase();
+
+            // Erases letters using the keyboard
+            if (key == "BACKSPACE"){
+                this.emptyBox();
+            }
 
             // Concatenates the first three letters of the code for the pressed key
             for(let i = 0; i < 3; i++){
@@ -283,7 +289,6 @@ class TermoWords{
             // Checks if key is a letter
             if (isKey == "Key"){
                 this.currentLine();
-                let key = event.key.toUpperCase();
                 // Allows you to put letter by letter into the boxes
                 for(let i = 0; i < this.linelenght; i++){
                     // Checks if it is an empty box to write
