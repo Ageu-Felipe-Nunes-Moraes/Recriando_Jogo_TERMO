@@ -267,8 +267,31 @@ class TermoWords{
                 }    
             }
         }
-    } 
-} 
+    }
+    // Captures and returns a keyboard key
+    keyPressed(){
+        document.addEventListener('keydown', (event) => {
+            let codeKey = event.code;
+            let isKey = "";
+            for(let i = 0; i < 3; i++){
+                isKey += codeKey[i];
+            }
+            if (isKey == "Key"){
+                this.currentLine();
+                let key = event.key.toUpperCase();
+                // Allows you to put letter by letter into the boxes
+                for(let i = 0; i < this.linelenght; i++){
+                    // Checks if it is an empty box to write
+                    if (this.wordLetterList[i].textContent == ""){
+                        this.wordLetterList[i].textContent = key;
+                        this.currentBox();
+                        break;     
+                    }
+                }
+            }
+        });
+    }
+}
 
 // Creating instance
 const termoWords = new TermoWords();
@@ -278,3 +301,4 @@ termoWords.quantityButtons(6);
 termoWords.keyBoardButtons();
 termoWords.currentLine();
 termoWords.currentBox();
+termoWords.keyPressed();
