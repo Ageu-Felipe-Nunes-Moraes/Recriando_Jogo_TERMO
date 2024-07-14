@@ -281,6 +281,11 @@ class TermoWords{
                 this.emptyBox();
             }
 
+            // Checks if it is the right word
+            if (key == "ENTER"){
+                this.checksRightWord();
+            }
+
             // Concatenates the first three letters of the code for the pressed key
             for(let i = 0; i < 3; i++){
                 isKey += codeKey[i];
