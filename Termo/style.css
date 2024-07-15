@@ -69,53 +69,63 @@ button {
     justify-content: flex-start;
     align-items: flex-end;
     flex-wrap: wrap;
-    width: 45em;
-    height: 29%;
+    width: 50vw;
+    height: 29vh;
 }
 
 .divkeyBoardButtons button {
   background-color: var(--backgrounButtonColor);
-  width: 60px;
-  height: 55px;
-  margin: 0px 3.1px 6.5px 3.1px;
+  width: 4.1vw;
+  height: 7.2vh; 
+  margin: 0 0.21vw 0.65vh 0.21vw; 
 }
 
 #key-q-to-p{
     display: flex;
     align-items: flex-end;
-    height: 45%;
-    margin-left: 1rem;
-    width: 92%;
+    height: 41.8%;
+    margin-left: 1vw; 
+    width: 48vw; 
+}
+
+#secondRowKeybord{
+    display: flex;
+    justify-content: space-between;
 }
 
 #key-a-to-l{
     display: flex;
-    margin-left: 2.40rem;
-    width: 85%;
+    margin-left: 2.2vw; 
+    width: 42.2vw;
+}
+
+#thirdRowKeybord{
+    display: flex;
+    justify-content: space-between;
 }
 
 #key-z-to-m{
     display: flex;
-    margin-left: 3.80rem;
-    width: 67%;
+    margin-left: 3.6vw; 
+    width: 33vw; 
 }
 
 .letter{
-    font-size: 3.6vh;
+    font-size: calc((2.5vh + 2.5vw)/2) ;
 }
 
 #enter{
-    width: 10.5rem;
-    font-size: 3.3vh;
-    border-radius: 8%;
-    margin: 0px 3.1px 6.5px 3.1px;
+    width: 11.7vw;
+    font-size: calc((2.2vh + 2.2vw)/2); 
+    border-radius: 7%; 
+    margin: 0 0.31vw 0.65vh 0.31vw; 
 }
 
 #exclusion{
-    font-size: 4vh;
-    left: 63.5rem;
-    border-radius: 8%;
-    margin: 0px 3.1px 6.5px 3.1px;
+    font-size: 4vh; 
+    left: 63.5vw; 
+    border-radius: 8%; 
+    margin: 0 0.31vw 0.65vh 0.31vw; 
 }
 
 #title-termo{

@@ -3,7 +3,7 @@ class TermoWords{
 
     // Constructor method
     constructor(){
-        this.wordList = ["TEEMO"];
+        this.wordList = ["TERMO"];
         this.letterChoice = "";
         this.letterPosition = "";
         this.linelenght = 5;
