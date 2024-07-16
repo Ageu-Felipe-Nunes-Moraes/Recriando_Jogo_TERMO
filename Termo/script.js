@@ -15,6 +15,7 @@ class TermoWords{
         this.equalLetterCounter = 0;
         this.rightLettersList = [];
         this.map = new Map();
+        this.currentColumn = 0;
     }
 
     // Creats the "boxs" buttons
@@ -33,6 +34,7 @@ class TermoWords{
                 button.className = "button";
                 button.onclick = () => {
                     alert("Você clicou no botão " + (i + 1) + (j + 1));
+                    this.mouseSelectsBox(j);
                 };
                 divButton.appendChild(button);
                 // Creating list by list using "dictionary" items
@@ -104,6 +106,14 @@ class TermoWords{
         }
     }
 
+    mouseSelectsBox(column){
+        for(let i = 0; i < this.linelenght; i++){
+            this.wordLetterList[i].style.borderBottomWidth = '0.6vh';
+        }
+        this.wordLetterList[column].style.borderBottomWidth = '1.3vh';
+        this.currentColumn = column;
+    }
+
     // Function that manipulates a specific line
     currentLine(){
         if (this.won == false){
@@ -112,7 +122,7 @@ class TermoWords{
             for(let i = 1; i < this.linelenght+1; i++){
                 specificBoxButton = document.getElementById('button' + this.columnCount + i);
                 this.wordLetterList.push(specificBoxButton);
-                // Applies borders to current lines
+                // Applies borders to current line
                 this.wordLetterList[i-1].style.border = '0.6vh solid #4C4347';
                 this.wordLetterList[i-1].style.backgroundColor = '#6e5c62';
             }
@@ -300,6 +310,7 @@ class TermoWords{
                     if (this.wordLetterList[i].textContent == ""){
                         this.wordLetterList[i].textContent = key;
                         this.currentBox();
+                        console.log(this.wordLetterList[i+1].style.borderBottomWidth)
                         break;     
                     }
                 }
