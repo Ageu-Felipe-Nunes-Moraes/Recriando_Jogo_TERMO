@@ -10,6 +10,14 @@
     --backgrounButtonColor: #4C4347;
 }
 
+* {
+    /*to not access text on the page*/
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard syntax */
+}
+
 body, html{
     background-color: var(--backgroundColor);
     display: flex;
@@ -47,6 +55,7 @@ button {
     cursor: pointer;
     font-family: 'Mitr', sans-serif;
     align-items: center;
+    outline: none; 
 }
 
 .divButtonBox {
