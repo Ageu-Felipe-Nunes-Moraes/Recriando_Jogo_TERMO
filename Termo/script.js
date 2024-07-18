@@ -84,7 +84,7 @@ class TermoWords{
         console.log(this.letterChoice);
         this.currentLine();
         // Allows you to put letter by letter into the boxes
-        for(let i = 0; i < this.linelenght; i++){
+        for(let i = this.currentColumn; i < this.linelenght; i++){
             // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].textContent = this.letterChoice;
@@ -96,7 +96,7 @@ class TermoWords{
 
     // Function that allows the user to know which box he is in
     currentBox(){
-        for(let i = 0; i < this.linelenght; i++){
+        for(let i = this.currentColumn; i < this.linelenght; i++){
             // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
@@ -132,7 +132,7 @@ class TermoWords{
     // Empties box to box
     emptyBox(){
         if (this.won == false){
-            for(let i = this.linelenght-1; i >= 0; i--){
+            for(let i = this.currentColumn; i >= 0; i--){
                 if (this.wordLetterList[i].textContent != ""){
                     this.wordLetterList[i].textContent = "";
                     this.currentBox();
@@ -305,7 +305,7 @@ class TermoWords{
             if (isKey == "Key"){
                 this.currentLine();
                 // Allows you to put letter by letter into the boxes
-                for(let i = 0; i < this.linelenght; i++){
+                for(let i = this.currentColumn; i < this.linelenght; i++){
                     // Checks if it is an empty box to write
                     if (this.wordLetterList[i].textContent == ""){
                         this.wordLetterList[i].textContent = key;
