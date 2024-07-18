@@ -96,12 +96,25 @@ class TermoWords{
 
     // Function that allows the user to know which box he is in
     currentBox(){
-        for(let i = this.currentColumn; i < this.linelenght; i++){
-            // Checks if it is an empty box to write
-            if (this.wordLetterList[i].textContent == ""){
-                this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
-                this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
-                break;     
+        if (this.wordLetterList[this.linelenght-1].textContent != ""){
+            this.currentColumn = 0;
+        }
+        if (this.currentColumn > 0){
+            for(let i = this.currentColumn; i < this.linelenght; i++){
+                if (this.wordLetterList[i].textContent == ""){
+                    this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                    this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
+                    break;     
+                }
+            }
+        } else {
+            for(let i = 0; i < this.linelenght; i++){
+                // Checks if it is an empty box to write
+                if (this.wordLetterList[i].textContent == ""){
+                    this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                    this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
+                    break;     
+                }
             }
         }
     }
@@ -132,7 +145,7 @@ class TermoWords{
     // Empties box to box
     emptyBox(){
         if (this.won == false){
-            for(let i = this.currentColumn; i >= 0; i--){
+            for(let i = this.linelenght-1; i >= 0; i--){
                 if (this.wordLetterList[i].textContent != ""){
                     this.wordLetterList[i].textContent = "";
                     this.currentBox();
