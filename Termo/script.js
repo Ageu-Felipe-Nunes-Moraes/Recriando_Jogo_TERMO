@@ -9,7 +9,7 @@ class TermoWords{
         this.linelenght = 5;
         this.wordLetterList = [];
         this.chosenWord = "";
-        this.columnCount = 1;
+        this.lineCount = 1;
         this.won = false;
         this.incompleteWord = false;
         this.equalLetterCounter = 0;
@@ -34,7 +34,7 @@ class TermoWords{
                 button.className = "button";
                 button.onclick = () => {
                     alert("Você clicou no botão " + (i + 1) + (j + 1));
-                    this.mouseSelectsBox(j);
+                    this.mouseSelectsBox(i, j);
                 };
                 divButton.appendChild(button);
                 // Creating list by list using "dictionary" items
@@ -119,12 +119,15 @@ class TermoWords{
         }
     }
 
-    mouseSelectsBox(column){
-        for(let i = 0; i < this.linelenght; i++){
-            this.wordLetterList[i].style.borderBottomWidth = '0.6vh';
+    mouseSelectsBox(line, column){
+        if (this.lineCount-1 == line){
+            for(let i = 0; i < this.linelenght; i++){
+                console.log(this.wordLetterList[i].id);
+                this.wordLetterList[i].style.borderBottomWidth = '0.6vh';
+            }
+            this.wordLetterList[column].style.borderBottomWidth = '1.3vh';
+            this.currentColumn = column;
         }
-        this.wordLetterList[column].style.borderBottomWidth = '1.3vh';
-        this.currentColumn = column;
     }
 
     // Function that manipulates a specific line
@@ -133,7 +136,7 @@ class TermoWords{
             let specificBoxButton = "";
             // Creates a list with all the clicked letters
             for(let i = 1; i < this.linelenght+1; i++){
-                specificBoxButton = document.getElementById('button' + this.columnCount + i);
+                specificBoxButton = document.getElementById('button' + this.lineCount + i);
                 this.wordLetterList.push(specificBoxButton);
                 // Applies borders to current line
                 this.wordLetterList[i-1].style.border = '0.6vh solid #4C4347';
@@ -191,8 +194,8 @@ class TermoWords{
                 this.won = true;
             } else{
                 // Conditional that counts to know the end of the game
-                if (this.columnCount < 6){
-                    this.columnCount += 1;
+                if (this.lineCount < 6){
+                    this.lineCount += 1;
                     this.wordLetterList = [];
                     this.currentLine();
                     this.currentBox();
@@ -296,8 +299,8 @@ class TermoWords{
         // Event listener that checks for keyboard action
         document.addEventListener('keydown', (event) => {
             let codeKey = event.code;
-            let isKey = "";
             let key = event.key.toUpperCase();
+            let isKey = "";
 
             // Erases letters using the keyboard
             if (key == "BACKSPACE"){
