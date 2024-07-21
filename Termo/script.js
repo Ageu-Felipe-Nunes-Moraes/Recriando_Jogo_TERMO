@@ -16,6 +16,7 @@ class TermoWords{
         this.rightLettersList = [];
         this.map = new Map();
         this.currentColumn = 0;
+        this.deleteLetter = false;
     }
 
     // Creats the "boxs" buttons
@@ -84,7 +85,7 @@ class TermoWords{
         console.log(this.letterChoice);
         this.currentLine();
         // Allows you to put letter by letter into the boxes
-        for(let i = this.currentColumn; i < this.linelenght; i++){
+        for(let i = this.currentColumn; i < this.linelenght+1; i++){
             // Checks if it is an empty box to write
             if (this.wordLetterList[i].textContent == ""){
                 this.wordLetterList[i].textContent = this.letterChoice;
@@ -92,14 +93,17 @@ class TermoWords{
                 break;     
             }
         }
+        if (this.currentColumn < 4){
+            this.currentColumn++;
+        }
     }
 
     // Function that allows the user to know which box he is in
     currentBox(){
-        if (this.wordLetterList[this.linelenght-1].textContent != ""){
-            this.currentColumn = 0;
-        }
-        if (this.currentColumn > 0){
+        //if (this.wordLetterList[this.linelenght-1].textContent != "" && this.deleteLetter == false){
+        //    this.currentColumn = 0;
+        //}
+        if (this.currentColumn >= 0 && this.deleteLetter == false){
             for(let i = this.currentColumn; i < this.linelenght; i++){
                 if (this.wordLetterList[i].textContent == ""){
                     this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
@@ -117,6 +121,7 @@ class TermoWords{
                 }
             }
         }
+        this.deleteLetter = false;
     }
 
     mouseSelectsBox(line, column){
@@ -147,12 +152,29 @@ class TermoWords{
 
     // Empties box to box
     emptyBox(){
+        
         if (this.won == false){
-            for(let i = this.linelenght-1; i >= 0; i--){
-                if (this.wordLetterList[i].textContent != ""){
-                    this.wordLetterList[i].textContent = "";
-                    this.currentBox();
-                    break;
+            this.deleteLetter = true;
+            if (this.currentColumn >= 0){
+                for(let i = this.currentColumn; i >= 0; i--){
+                    if (this.wordLetterList[i].textContent != ""){
+                        this.wordLetterList[i].textContent = "";
+                        this.currentBox();
+                        break;
+                    }
+                }
+                console.log(this.currentColumn);
+                if (this.currentColumn > 0){
+                    this.currentColumn--;
+                }
+                console.log(this.currentColumn);
+            } else {
+                for(let i = this.linelenght-1; i >= 0; i--){
+                    if (this.wordLetterList[i].textContent != ""){
+                        this.wordLetterList[i].textContent = "";
+                        this.currentBox();
+                        break;
+                    }
                 }
             }
         }
@@ -174,6 +196,7 @@ class TermoWords{
         }
         // It happens if the word is complete
         if(this.incompleteWord === false){
+            this.currentColumn = 0;
             for(let i = 0; i < this.linelenght; i++){
                 // Joins all the letters and form a word
                 this.chosenWord += this.wordLetterList[i].textContent;
@@ -321,14 +344,17 @@ class TermoWords{
             if (isKey == "Key"){
                 this.currentLine();
                 // Allows you to put letter by letter into the boxes
-                for(let i = this.currentColumn; i < this.linelenght; i++){
+                for(let i = this.currentColumn; i < this.linelenght+1; i++){
                     // Checks if it is an empty box to write
                     if (this.wordLetterList[i].textContent == ""){
                         this.wordLetterList[i].textContent = key;
                         this.currentBox();
-                        console.log(this.wordLetterList[i+1].style.borderBottomWidth)
+                        console.log(this.wordLetterList[i+1].style.borderBottomWidth);
                         break;     
                     }
+                }
+                if (this.currentColumn < 4){
+                    this.currentColumn++;
                 }
             }
         });
