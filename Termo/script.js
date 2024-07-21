@@ -100,9 +100,21 @@ class TermoWords{
 
     // Function that allows the user to know which box he is in
     currentBox(){
-        //if (this.wordLetterList[this.linelenght-1].textContent != "" && this.deleteLetter == false){
-        //    this.currentColumn = 0;
-        //}
+        if (this.wordLetterList[this.linelenght-1].textContent != "" && this.deleteLetter == false){
+            let counterEmptySpace = 0;
+            for (let i = 0; i < this.linelenght; i++){
+                if (this.wordLetterList[i].textContent === ""){
+                    counterEmptySpace++;
+                }
+            }
+            console.log(counterEmptySpace);
+
+            if (counterEmptySpace === 0){
+                this.currentColumn = 4;
+            } else if (counterEmptySpace !== 0 && this.currentColumn === 4){
+                this.currentColumn = -1;
+            }
+        }
         if (this.currentColumn >= 0 && this.deleteLetter == false){
             for(let i = this.currentColumn; i < this.linelenght; i++){
                 if (this.wordLetterList[i].textContent == ""){
@@ -152,7 +164,6 @@ class TermoWords{
 
     // Empties box to box
     emptyBox(){
-        
         if (this.won == false){
             this.deleteLetter = true;
             if (this.currentColumn >= 0){
