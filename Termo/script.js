@@ -17,6 +17,8 @@ class TermoWords{
         this.map = new Map();
         this.currentColumn = 0;
         this.deleteLetter = false;
+        this.arrowRight = false;
+        this.arrowLeft = false;
     }
 
     // Creats the "boxs" buttons
@@ -100,6 +102,7 @@ class TermoWords{
 
     // Function that allows the user to know which box he is in
     currentBox(){
+        console.log(this.deleteLetter);
         if (this.wordLetterList[this.linelenght-1].textContent != "" && this.deleteLetter == false){
             let counterEmptySpace = 0;
             for (let i = 0; i < this.linelenght; i++){
@@ -117,12 +120,28 @@ class TermoWords{
         }
         if (this.currentColumn >= 0 && this.deleteLetter == false){
             for(let i = this.currentColumn; i < this.linelenght; i++){
-                if (this.wordLetterList[i].textContent == ""){
-                    this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
-                    this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
-                    break;     
+                if (this.arrowLeft === true || this.arrowRight === true){
+                    if (this.arrowRight === true){
+                        this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                        this.wordLetterList[i-1].style.borderBottomWidth = '0.6vh';
+                        break;     
+                    } else{
+                        this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                        this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
+                        break;     
+                    }
+                } else{
+                    for(let i = this.currentColumn; i < this.linelenght; i++){
+                        if (this.wordLetterList[i].textContent == ""){
+                            this.wordLetterList[i].style.borderBottomWidth = '1.3vh';
+                            this.wordLetterList[i+1].style.borderBottomWidth = '0.6vh';
+                            break;     
+                        }
+                    }
                 }
             }
+            this.arrowRight = false;
+            this.arrowLeft = false;
         } else {
             for(let i = 0; i < this.linelenght; i++){
                 // Checks if it is an empty box to write
@@ -335,6 +354,16 @@ class TermoWords{
             let codeKey = event.code;
             let key = event.key.toUpperCase();
             let isKey = "";
+            console.log(this.currentColumn);
+            if (key === "ARROWRIGHT" && this.currentColumn < 4){
+                this.currentColumn++;
+                this.arrowRight = true;
+            }
+            if (key === "ARROWLEFT" && this.currentColumn > 0){
+                this.currentColumn--;
+                this.arrowLeft = true;
+            }
+            this.currentBox();
 
             // Erases letters using the keyboard
             if (key == "BACKSPACE"){
@@ -367,6 +396,7 @@ class TermoWords{
                 if (this.currentColumn < 4){
                     this.currentColumn++;
                 }
+                console.log(this.currentColumn);
             }
         });
     }
