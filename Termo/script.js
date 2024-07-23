@@ -95,6 +95,7 @@ class TermoWords{
                 break;     
             }
         }
+        // To advance boxes
         if (this.currentColumn < 4){
             this.currentColumn++;
         }
@@ -103,6 +104,7 @@ class TermoWords{
     // Function that allows the user to know which box he is in
     currentBox(){
         console.log(this.deleteLetter);
+        // To check if there are empty spaces in the boxes for the user to go back and fill in
         if (this.wordLetterList[this.linelenght-1].textContent != "" && this.deleteLetter == false){
             let counterEmptySpace = 0;
             for (let i = 0; i < this.linelenght; i++){
@@ -118,6 +120,7 @@ class TermoWords{
                 this.currentColumn = -1;
             }
         }
+        // To position the box the user wants to use
         if (this.currentColumn >= 0 && this.deleteLetter == false){
             for(let i = this.currentColumn; i < this.linelenght; i++){
                 if (this.arrowLeft === true || this.arrowRight === true){
@@ -155,6 +158,7 @@ class TermoWords{
         this.deleteLetter = false;
     }
 
+    // Function that captures the current column
     mouseSelectsBox(line, column){
         if (this.lineCount-1 == line){
             for(let i = 0; i < this.linelenght; i++){
@@ -181,7 +185,7 @@ class TermoWords{
         }
     }
 
-    // Empties box to box
+    // Empty box function
     emptyBox(){
         if (this.won == false){
             this.deleteLetter = true;
@@ -194,6 +198,7 @@ class TermoWords{
                     }
                 }
                 console.log(this.currentColumn);
+                // To return to previous boxes
                 if (this.currentColumn > 0){
                     this.currentColumn--;
                 }
@@ -354,7 +359,9 @@ class TermoWords{
             let codeKey = event.code;
             let key = event.key.toUpperCase();
             let isKey = "";
+
             console.log(this.currentColumn);
+            // To move through the boxes using the keyboard and place the letter anywhere
             if (key === "ARROWRIGHT" && this.currentColumn < 4){
                 this.currentColumn++;
                 this.arrowRight = true;
@@ -393,6 +400,7 @@ class TermoWords{
                         break;     
                     }
                 }
+                // To advance boxes
                 if (this.currentColumn < 4){
                     this.currentColumn++;
                 }
