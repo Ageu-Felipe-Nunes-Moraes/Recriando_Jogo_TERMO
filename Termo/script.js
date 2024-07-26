@@ -5,7 +5,7 @@ class TermoWords{
     constructor(){
         this.wordList = ["TERMO"];
         this.letterChoice = "";
-        this.letterPosition = "";
+        this.letterCurrentChosen = "";
         this.linelenght = 5;
         this.wordLetterList = [];
         this.chosenWord = "";
@@ -14,7 +14,6 @@ class TermoWords{
         this.incompleteWord = false;
         this.equalLetterCounter = 0;
         this.rightLettersList = [];
-        this.map = new Map();
         this.currentColumn = 0;
         this.deleteLetter = false;
         this.arrowRight = false;
@@ -312,21 +311,19 @@ class TermoWords{
             }
             for(let k = 0; k < this.linelenght; k++){
                 // If the letter is in the word, but in the wrong position, the following will happen
-                if (word[i] === this.chosenWord[k]){
-                    if (i !== k){
-                        // Changes the colors of the keyboard letters to yellow according to the chosen word
-                        let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
-                        // If the letter was never in the correct position in the word, what is below will happen
-                        if (!this.rightLettersList.includes(word[i])){
-                            specificKeyYellow.style.background = '#d3ad69';
-                        }
-                        if (this.equalLetterCounter > 0){
-                            console.log(this.equalLetterCounter);
-                            // Changes the colors of the boxes to yellow according to the chosen word
-                            this.wordLetterList[k].style.backgroundColor = '#d3ad69';
-                            this.wordLetterList[k].style.border = 'none';
-                            this.equalLetterCounter--;
-                        }
+                if (word[i] === this.chosenWord[k] && i !== k){
+                    // Changes the colors of the keyboard letters to yellow according to the chosen word
+                    let specificKeyYellow = document.getElementById(this.wordLetterList[k].textContent + "button");
+                    // If the letter was never in the correct position in the word, what is below will happen
+                    if (!this.rightLettersList.includes(word[i])){
+                        specificKeyYellow.style.background = '#d3ad69';
+                    }
+                    if (this.equalLetterCounter > 0){
+                        console.log(this.equalLetterCounter);
+                        // Changes the colors of the boxes to yellow according to the chosen word
+                        this.wordLetterList[k].style.backgroundColor = '#d3ad69';
+                        this.wordLetterList[k].style.border = 'none';
+                        this.equalLetterCounter--;
                     }
                 }    
             }
